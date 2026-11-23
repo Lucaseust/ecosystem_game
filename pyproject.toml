@@ -1,0 +1,11 @@
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = ["dist", "donnees", "donnees-repetition"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B"]
+ignore = ["E402"] # Executable test scripts deliberately add the project root first.
+
+[tool.ruff.format]
+line-ending = "lf"

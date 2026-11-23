@@ -1,0 +1,28 @@
+# Local games contain participant names and access credentials.
+donnees*/
+partie-*.json
+.interface.json
+.interface.tmp
+cloudflared
+cloudflared.exe
+cloudflared-*
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+text-review.json
+dist/
+artifacts/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+# Session reports and locally generated training material.
+docs/debrief-entrainement.html
+docs/debrief-entrainement-apercu.png
+docs/interface-desktop.png

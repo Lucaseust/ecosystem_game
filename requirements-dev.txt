@@ -1,0 +1,7 @@
+# Optional developer tools only. The game itself has no pip dependencies.
+playwright==1.58.0
+ruff==0.16.10
+tree-sitter==0.26.0
+tree-sitter-javascript==0.25.0
+jsbeautifier==2.0.3
+Markdown==3.11.2

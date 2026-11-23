@@ -1,0 +1,38 @@
+flowchart TD
+    M[Janvier : mandat de Métropole] --> C[Proposer un accord entre cinq entreprises]
+    C --> A{Activités nécessaires couvertes et engagements consentis ?}
+    A -->|Non, avant échéance| R[Revoir les engagements ou chercher une alternative]
+    R --> C
+    A -->|Échéance sans accord| W[Démarrage différé : conserver actifs et coûts engagés]
+    W -->|Une fenêtre reste ouverte dans l'année| R2[Recomposition à la prochaine fenêtre]
+    W -->|Année terminée| Z[Bilan sans lancement : conserver les résultats acquis]
+    R2 --> C
+    A -->|Oui| I[Financer les actifs et choisir les interfaces]
+    I --> L{Date de démarrage et préparation ?}
+    L -->|Dès que les prérequis sont remplis| V[Premiers trajets et recettes possibles]
+    L -->|Préparation supplémentaire| P[Coût présent et démarrage différé]
+    P --> V
+    V --> E{Tirage local propre au groupe}
+    E -->|Demande supplémentaire| O[Accepter et financer la capacité, limiter ou refuser]
+    E -->|Offre extérieure à un partenaire| B[Rester, négocier un avenant ou sortir selon ses droits]
+    E -->|Incident ou nouvelle exigence| S[Réparer, adapter, remplacer si possible ou réduire le service]
+    E -->|Hausse de coûts privée| U[Conserver le contrat, renégocier ou suspendre sa capacité]
+    E -->|Baisse de recettes collective| K[Réévaluer le partage et la viabilité du service]
+    E -->|Activité ordinaire| N[Continuer avec les contrats et capacités existants]
+    O --> H[Mettre à jour les comptes, actifs, liens et engagements]
+    B --> H
+    S --> H
+    N --> H
+    U --> H
+    K --> H
+    H --> Q{À la rentrée : activités couvertes et capacité suffisante ?}
+    Q -->|Oui| X[Choisir entre extension et périmètre constant]
+    Q -->|Non| Y[Recomposer, réduire le périmètre ou organiser une sortie]
+    X --> D[Décembre : résultats cumulatifs et trajectoires]
+    Y --> D
+    Z --> F
+    D --> F[Débrief : décisions, circonstances, conséquences et théorie]
+    classDef chance fill:#112a39,stroke:#78e5ee,color:#edf5f8
+    classDef outcome fill:#143429,stroke:#b9ed86,color:#edf5f8
+    class E chance
+    class D,F outcome

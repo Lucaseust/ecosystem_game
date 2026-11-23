@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07121c">
+<title>ECOSYSTEM</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/participant.css">
+<link rel="icon" href="/static/mark.svg" type="image/svg+xml">
+</head>
+<body class="participant">
+
+<div id="offline" class="offline" hidden>Connexion perdue — reconnexion…</div>
+
+<!-- ecran d'accueil ---------------------------------------------------- -->
+<section id="gate" class="wrap entrance">
+  <div class="brand"><img src="/static/mark.svg" alt="" width="38" height="38"><h1 class="wordmark">ecosystem<span class="wordmark-dot">.</span></h1></div>
+  <div class="edition">Métropole, 2032 · À vous de jouer</div>
+  <p class="gate-title">La ville attend.<br>À quel prix<br>embarquerez-vous ?</p>
+  <p class="muted">Un service de navettes autonomes doit voir le jour. Vous dirigez l’une des cinq entreprises du projet. Chacune apporte une pièce indispensable. Chacune défend ses intérêts.</p>
+  <div class="role-line" aria-label="Les cinq partenaires"><span>MOBI</span><i></i><span>AUTO</span><i></i><span>BRAIN</span><i></i><span>GRID</span><i></i><span>FLEET</span></div>
+
+  <div class="card">
+    <label for="pname">Votre prénom</label>
+    <input id="pname" type="text" autocomplete="given-name" maxlength="40" required
+           placeholder="Prénom" enterkeyhint="next">
+    <div style="height:.8rem"></div>
+    <label for="plastname">Votre nom de famille</label>
+    <input id="plastname" type="text" autocomplete="family-name" maxlength="40" required
+           placeholder="Nom de famille" enterkeyhint="next">
+    <div style="height:.8rem"></div>
+    <div id="codewrap">
+      <label for="pcode">Code de partie</label>
+      <input id="pcode" type="text" maxlength="4" autocapitalize="characters"
+             autocomplete="off" spellcheck="false" placeholder="ABCD"
+             enterkeyhint="go"
+             style="text-transform:uppercase;letter-spacing:.3em;text-align:center">
+      <div style="height:.8rem"></div>
+    </div>
+    <button id="gojoin" class="primary block">Prendre place à la table →</button>
+    <p id="gateerr" role="alert" class="small" style="color:var(--bad);margin:.7rem 0 0" hidden></p>
+  </div>
+
+  <p class="small muted">Gardez cet onglet ouvert pendant la séance.</p>
+</section>
+
+<!-- jeu ---------------------------------------------------------------- -->
+<div id="game" hidden>
+  <header class="topbar">
+    <div class="topbar-in">
+      <span id="tRole" class="badge-role">—</span>
+      <div class="who">
+        <b id="tName">—</b>
+        <span id="tTeam">—</span>
+      </div>
+      <span id="tTimer" class="timer">—</span>
+      <button id="replayIntro" class="brief-button" onclick="EcoIntro.open()" aria-label="Revoir le briefing du jeu">Brief <span aria-hidden="true">▷</span></button>
+    </div>
+  </header>
+  <div id="tPhase" class="phase-strip" aria-live="polite">—</div>
+  <main id="app" class="wrap"></main>
+  <nav id="playerNav" class="player-nav" aria-label="Espace de jeu" hidden></nav>
+</div>
+
+<dialog id="intro" class="intro" aria-labelledby="introTitle" aria-describedby="introText">
+  <header class="intro-top"><span class="intro-brand">ecosystem<span>.</span></span><button id="introSkip" class="ghost small">Passer le briefing ↗</button></header>
+  <div id="introStage" class="intro-stage" aria-live="polite"></div>
+  <footer class="intro-controls">
+    <div class="intro-progress" role="group" aria-label="Étapes du briefing"><span><i></i></span><span><i></i></span><span><i></i></span></div>
+    <div class="intro-control-row"><span id="introCount" class="edition">01 / 03</span><button id="introPause" class="ghost small" aria-pressed="false">Pause</button></div>
+    <div class="intro-buttons"><button id="introBack" class="ghost">← Retour</button><button id="introNext" class="primary" autofocus>Suivant →</button></div>
+  </footer>
+</dialog>
+
+<script src="/static/session.js"></script>
+<script src="/static/intro-legacy.js"></script>
+<script src="/static/joueur.js"></script>
+</body>
+</html>

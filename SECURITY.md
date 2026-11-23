@@ -1,0 +1,15 @@
+# Security and private session data
+
+ECOSYSTEM is a supervised classroom application. Source publication and running a public service have different requirements. The game can be downloaded and run without external packages; that does not make the built-in HTTP server a production hosting platform. [Python documents this limitation](https://docs.python.org/3/library/http.server.html).
+
+Use loopback for rehearsal, a trusted LAN for classroom play, or a temporary HTTPS tunnel for a supervised session. Stop the server afterwards. A shared HTTP LAN does not encrypt traffic. A public tunnel publishes the service to anyone who obtains its address; the short game code is a room identifier, not a strong access credential. [Cloudflare describes Quick Tunnels as temporary testing/development infrastructure](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
+
+The server validates JSON shape and types, limits bodies to 16 KiB, rejects cross-site POSTs, bounds worker threads and request reads, and rate-limits joins/actions and failed instructor authentication. Static files are confined to the real `web` directory, including symlink resolution. Responses disable framing and MIME sniffing, suppress referrers and restrict resource origins. Dynamic participant text is escaped before HTML insertion. The Content Security Policy still allows inline handlers used by the existing UI; it does not allow `eval`.
+
+Instructor and player credentials are generated with `secrets`. Current browser clients use authorisation headers, remove the initial instructor credential from the address bar and fetch exports with authentication. Query/body authentication remains available for compatibility with the archived client and command-line scripts. The launcher does not write its instructor key into preferences. Saved games do retain the key and player tokens so sessions can resume. A browser holding a player token can act for that player; the application does not provide institutional identity verification or isolated per-user accounts.
+
+Keep `donnees*/`, `partie-*.json`, `.interface.json`, local exports and executables out of Git. Use `python tools/build_release.py` for an allowlisted source ZIP; do not upload the whole working folder. If these files were already committed, `.gitignore` does not remove their history: remove the affected files from publication, rotate credentials and consider the data already disclosed. No repository was initialised or published by the review.
+
+For persistent Internet hosting, use a maintained application server/reverse proxy with TLS, an access-control layer, deployment monitoring and appropriate data retention. The current limits reduce accidental overload and common request abuse; they do not provide distributed denial-of-service protection, a penetration-test certification or multi-session tenancy.
+
+Report vulnerabilities privately to the repository owner through GitHub's private vulnerability reporting feature if enabled. Do not include real student identities, keys or save files in public issues.
